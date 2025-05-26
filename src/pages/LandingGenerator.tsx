@@ -43,6 +43,8 @@ export const LandingGenerator = () => {
     navigator.clipboard.writeText(result.content.html);
   };
 
+  const cleanHtml = result?.content.html.replace(/^```html|```$/gim, '').trim() || '';
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -104,7 +106,7 @@ export const LandingGenerator = () => {
             <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
               <div
                 className="p-6"
-                dangerouslySetInnerHTML={{ __html: result.content.html }}
+                dangerouslySetInnerHTML={{ __html: cleanHtml }}
               />
             </div>
           </div>
